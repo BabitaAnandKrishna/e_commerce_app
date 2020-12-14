@@ -11,16 +11,30 @@ class _ProductsState extends State<Products> {
   var product_list = [
     {
       "name": "Blazer",
-      "picture": "images/products/blazer1.jpeg",
+      // "picture": "images/products/blazer1.jpeg",
+      "picture": "images/products/BlazerM.jpg",
       "old_price": 123,
       "price": 85,
     },
     {
       "name": "Red Dress",
-      "picture": "images/products/dress1.jpeg",
+      "picture": "images/products/Reddress.jpg",
+      // "picture": "images/products/dress1.jpeg",
       "old_price": 100,
       "price": 65,
     },
+    // {
+    //   "name": "Blazer",
+    //   "picture": "images/products/blazer1.jpeg",
+    //   "old_price": 123,
+    //   "price": 85,
+    // },
+    // {
+    //   "name": "Red Dress",
+    //   "picture": "images/products/dress1.jpeg",
+    //   "old_price": 100,
+    //   "price": 65,
+    // },
     {
       "name": "Coat",
       "picture": "images/products/blazer2.jpeg",
@@ -77,7 +91,7 @@ class _ProductsState extends State<Products> {
     },
     {
       "name": "Blazer",
-      "picture": "images/products/blazer1.jpeg",
+      "picture": "images/products/BlazerB.jpg",
       "old_price": 123,
       "price": 85,
     },

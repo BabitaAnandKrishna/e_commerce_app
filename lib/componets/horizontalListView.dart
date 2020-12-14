@@ -52,7 +52,7 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.only(top:4.0,left: 2),
       child: InkWell(
         onTap: () {},
         child: Container(

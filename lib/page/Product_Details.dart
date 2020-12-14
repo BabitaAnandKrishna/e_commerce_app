@@ -303,13 +303,15 @@ class _Similar_productsState extends State<Similar_products> {
   var product_list = [
     {
       "name": "Blazer",
-      "picture": "images/products/blazer1.jpeg",
+      // "picture": "images/products/blazer1.jpeg",
+      "picture": "images/products/BlazerM.jpg",
       "old_price": 123,
       "price": 85,
     },
     {
       "name": "Red Dress",
-      "picture": "images/products/dress1.jpeg",
+      "picture": "images/products/Reddress.jpg",
+      // "picture": "images/products/dress1.jpeg",
       "old_price": 100,
       "price": 65,
     },
@@ -337,7 +339,7 @@ class _Similar_productsState extends State<Similar_products> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        scrollDirection:  Axis.vertical,
+        // scrollDirection:  Axis.vertical,
         itemCount: product_list.length,
         gridDelegate:
         new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),

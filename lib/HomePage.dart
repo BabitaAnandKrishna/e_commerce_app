@@ -68,12 +68,12 @@ class _HomePageState extends State<HomePage> {
         child: new ListView(
           children: <Widget>[
             // header
-            new UserAccountsDrawerHeader(
+            UserAccountsDrawerHeader(
               accountName: Text("Babita"),
               accountEmail: Text("babita.k@gmail.com"),
               currentAccountPicture: GestureDetector(
                 child: CircleAvatar(
-                  radius: 50,
+                  radius: 40,
                   backgroundColor: Colors.white,
                   child: Icon(
                     Icons.person,
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
 
           //padding widget
           new Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top:7,left: 10),
             child: new Text("Categories"),
           ),
 
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
 
           //padding widget
           new Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.only(top:20,left: 10,bottom: 20),
             child: new Text("Recent Products"),
           ),
 
