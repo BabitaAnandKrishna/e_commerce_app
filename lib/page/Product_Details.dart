@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/HomePage.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -24,7 +25,10 @@ class _ProductDetailsState extends State<ProductDetails> {
         appBar: new AppBar(
           elevation: 0.1,
           backgroundColor: Colors.red,
-          title: Text('ShopApp'),
+          title: InkWell(
+              onTap: (){Navigator.push(context, MaterialPageRoute(
+                  builder:(context)=> HomePage()));},
+              child: Center(child: Text('ShopApp'))),
           actions: <Widget>[
             new IconButton(
                 icon: Icon(
@@ -32,12 +36,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                   color: Colors.white,
                 ),
                 onPressed: () {}),
-            new IconButton(
-                icon: Icon(
-                  Icons.shopping_cart,
-                  color: Colors.white,
-                ),
-                onPressed: () {}),
+            // new IconButton(
+            //     icon: Icon(
+            //       Icons.shopping_cart,
+            //       color: Colors.white,
+            //     ),
+            //     onPressed: () {}),
           ],
         ),
         body: new ListView(
@@ -271,9 +275,157 @@ class _ProductDetailsState extends State<ProductDetails> {
                 Padding(padding: EdgeInsets.all(5.0),
                   child: Text("NEW"),),
               ],
+            ),
+
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Similar Products"),
+            ),
+            //Similar Product Section
+
+            Container(
+              height: 340,
+              child: Similar_products(),
             )
           ],
         )
+    );
+  }
+}
+
+class Similar_products extends StatefulWidget {
+  @override
+  _Similar_productsState createState() => _Similar_productsState();
+}
+
+class _Similar_productsState extends State<Similar_products> {
+  var product_list = [
+    {
+      "name": "Blazer",
+      "picture": "images/products/blazer1.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Red Dress",
+      "picture": "images/products/dress1.jpeg",
+      "old_price": 100,
+      "price": 65,
+    },
+
+    {
+      "name": "Sandle",
+      "picture": "images/products/hills1.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Red Sandle",
+      "picture": "images/products/hills2.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Pants",
+      "picture": "images/products/pants1.jpg",
+      "old_price": 123,
+      "price": 85,
+    },
+
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        scrollDirection:  Axis.vertical,
+        itemCount: product_list.length,
+        gridDelegate:
+        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemBuilder: (BuildContext context, int index) {
+          return Similar_Single_prod(
+            prod_name: product_list[index]['name'],
+            prod_picture: product_list[index]['picture'],
+            prod_old_price: product_list[index]['old_price'],
+            prod_price: product_list[index]['price'],
+          );
+        });
+  }
+}
+class Similar_Single_prod extends StatelessWidget {
+  final prod_name;
+  final prod_picture;
+  final prod_old_price;
+  final prod_price;
+
+  Similar_Single_prod({
+    this.prod_name,
+    this.prod_picture,
+    this.prod_old_price,
+    this.prod_price,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Hero(
+        // tag: prod_name,
+        tag: Text("hero1"),
+        child: Material(
+          child: InkWell(
+            // onTap: () {
+            //   Navigator.push(
+            //     context,
+            //     MaterialPageRoute(builder: (context) => ProductDetails()),
+            //   );
+            // },
+            onTap: () => Navigator.of(context).push(
+                new MaterialPageRoute(
+                  //here we are passing the values of the product to the product details page
+                    builder: (context) => new ProductDetails(
+                      product_details_name: prod_name,
+                      product_details_new_price: prod_price,
+                      product_details_old_price: prod_old_price,
+                      product_details_picure: prod_picture,
+                    )
+                )
+            ),
+            child: GridTile(
+              footer: Container(
+                color: Colors.white70,
+                child: Row(
+                  children:<Widget> [
+                    Expanded(child: Text(prod_name,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 16) ,),
+                    ),
+                    Text("\£${prod_price}",style: TextStyle
+                      (color: Colors.red,fontWeight: FontWeight.bold))
+                  ],
+                ),
+                /*ListTile(
+                  leading: Text(
+                    prod_name,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  title: Text(
+                    "\£$prod_price",
+                    style: TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.w800),
+                  ),
+                  subtitle: Text(
+                    "\£$prod_old_price",
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w800,
+                        decoration: TextDecoration.lineThrough),
+                  ),
+                ),*/
+              ),
+              child: Image.asset(
+                prod_picture,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

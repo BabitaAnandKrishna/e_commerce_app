@@ -16,22 +16,31 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Widget image_carousel = new Container(
-      height: 200,
+      height: 250,
       child: new Carousel(
         boxFit: BoxFit.cover,
         images: [
-          AssetImage('images/c1.jpg'),
-          AssetImage('images/m1.jpeg'),
-          AssetImage('images/w3.jpeg'),
-          AssetImage('images/w4.jpeg'),
-          AssetImage('images/m2.jpg'),
+          // AssetImage('images/c1.jpg'),
+          // AssetImage('images/m1.jpeg'),
+          // AssetImage('images/w3.jpeg'),
+          // AssetImage('images/w4.jpeg'),
+          // AssetImage('images/m2.jpg'),
+          AssetImage('images/FrontPage/f1.jpg'),
+          AssetImage('images/FrontPage/f2.jpg'),
+          AssetImage('images/FrontPage/f4.jpg'),
+          AssetImage('images/FrontPage/k1.jpg'),
+          // AssetImage('images/FrontPage/k3.jpg'),
+          AssetImage('images/FrontPage/m1.jpg'),
+          AssetImage('images/FrontPage/m2.jpg'),
+          AssetImage('images/FrontPage/w22.jpg'),
         ],
-        autoplay: false,
-        // animationCurve: Curves.fastOutSlowIn,
-        // animationDuration: Duration(milliseconds: 1000),
+        autoplay: true,
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 1000),
         dotSize: 4.0,
         // dotColor: Colors.red,
         indicatorBgPadding: 2.0,
+        dotBgColor: Colors.transparent,
       ),
     );
 
@@ -39,7 +48,7 @@ class _HomePageState extends State<HomePage> {
       appBar: new AppBar(
         elevation: 0.1,
         backgroundColor: Colors.red,
-        title: Text('ShopApp'),
+        title: Center(child: Text('ShopApp')),
         actions: <Widget>[
           new IconButton(
               icon: Icon(
@@ -81,35 +90,35 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text("Home Page"),
-                leading: Icon(Icons.home),
+                leading: Icon(Icons.home,color: Colors.red,),
               ),
             ),
             InkWell(
               onTap: () {},
               child: ListTile(
                 title: Text("My Account"),
-                leading: Icon(Icons.person),
+                leading: Icon(Icons.person,color: Colors.red,),
               ),
             ),
             InkWell(
               onTap: () {},
               child: ListTile(
                 title: Text("My Orders"),
-                leading: Icon(Icons.shopping_basket),
+                leading: Icon(Icons.shopping_basket,color: Colors.red,),
               ),
             ),
             InkWell(
               onTap: () {},
               child: ListTile(
-                title: Text("Categories"),
-                leading: Icon(Icons.dashboard),
+                title: Text("Shopping cart"),
+                leading: Icon(Icons.shopping_cart,color: Colors.red,),
               ),
             ),
             InkWell(
               onTap: () {},
               child: ListTile(
                 title: Text("Favourites"),
-                leading: Icon(Icons.favorite),
+                leading: Icon(Icons.favorite,color: Colors.red,),
               ),
             ),
 
@@ -120,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                 title: Text("Settings"),
                 leading: Icon(
                   Icons.settings,
-                  color: Colors.blue,
+                  // color: Colors.blue,
                 ),
               ),
             ),
@@ -130,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                 title: Text("About"),
                 leading: Icon(
                   Icons.help,
-                  color: Colors.green,
+                  // color: Colors.green,
                 ),
               ),
             ),
@@ -157,7 +166,7 @@ class _HomePageState extends State<HomePage> {
             child: new Text("Recent Products"),
           ),
 
-          // grid view beins here
+          // grid view begins here
           Container(
             height: 320,
             child: Products(),

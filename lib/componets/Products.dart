@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/page/Product_Details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class Products extends StatefulWidget {
   @override
@@ -17,74 +18,75 @@ class _ProductsState extends State<Products> {
     {
       "name": "Red Dress",
       "picture": "images/products/dress1.jpeg",
+      "old_price": 100,
+      "price": 65,
+    },
+    {
+      "name": "Coat",
+      "picture": "images/products/blazer2.jpeg",
       "old_price": 123,
       "price": 85,
     },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/blazer2.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/dress2.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/hills1.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/hills2.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/pants1.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/pants2.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/shoe1.jpg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/skt1.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/skt12.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
-    // {
-    //   "name": "Blazer",
-    //   "picture": "images/products/blazer1.jpeg",
-    //   "old_price": 123,
-    //   "price": 85,
-    // },
+    {
+      "name": "Frock",
+      "picture": "images/products/dress2.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Sandle",
+      "picture": "images/products/hills1.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Red Sandle",
+      "picture": "images/products/hills2.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Pants",
+      "picture": "images/products/pants1.jpg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Joggers",
+      "picture": "images/products/pants2.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Shoe",
+      "picture": "images/products/shoe1.jpg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Skirt",
+      "picture": "images/products/skt1.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Pink Skirt",
+      "picture": "images/products/skt2.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
+    {
+      "name": "Blazer",
+      "picture": "images/products/blazer1.jpeg",
+      "old_price": 123,
+      "price": 85,
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+        scrollDirection:  Axis.vertical,
         itemCount: product_list.length,
         gridDelegate:
             new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
@@ -115,7 +117,8 @@ class Single_prod extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Hero(
-        tag: prod_name,
+        // tag: prod_name,
+        tag: Text("hero1"),
         child: Material(
           child: InkWell(
             // onTap: () {
@@ -136,9 +139,17 @@ class Single_prod extends StatelessWidget {
                 )
             ),
             child: GridTile(
-              footer: Container(
-                color: Colors.white70,
-                child: ListTile(
+                footer: Container(
+                    color: Colors.white70,
+                    child: Row(
+                      children:<Widget> [
+                        Expanded(child: Text(prod_name,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 16) ,),
+                        ),
+                          Text("\£${prod_price}",style: TextStyle
+                            (color: Colors.red,fontWeight: FontWeight.bold))
+                      ],
+                    ),
+                /*ListTile(
                   leading: Text(
                     prod_name,
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -155,11 +166,11 @@ class Single_prod extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                         decoration: TextDecoration.lineThrough),
                   ),
-                ),
+                ),*/
               ),
-              child: Image.asset(
-                prod_picture,
-                fit: BoxFit.cover,
+                  child: Image.asset(
+                  prod_picture,
+                  fit: BoxFit.cover,
               ),
             ),
           ),
